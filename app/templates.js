@@ -1,0 +1,1 @@
+angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("map/map.tpl.html","<h2>hello world</h2>");}]);
