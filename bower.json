@@ -1,0 +1,15 @@
+{
+  "name": "gbif-searching-tool",
+  "version": "0.1",
+  "authors": [
+    "Michael Akbaraly <michael.akbaraly@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
