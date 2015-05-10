@@ -1,9 +1,23 @@
 <html>
   <head>
-    <title>gbif-searching-tool</title></head>
-  <body ng-app="gbifSearchingTool">
-    <h1>GBIF Search Tool</h1>
+    <title>gbif-searching-tool</title>
+    <!-- build:css css/ext.css -->
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="gbif-tool">
+    <div class="container">
+      <h1>GBIF Searching Tool</h1>
+      <div ng-include="'map/map.tpl.html'"></div>
+    </div>
   </body>
-  <script src="lib.js"></script>
-  <script src="app.js"></script>
+
+  <!-- build:lib js/lib.js -->
+  <script src="bower_components/angular/angular.js"></script>
+  <!-- endbuild -->
+  <!-- build:app js/app.js -->
+  <script src="./app.module.js"></script>
+  <script src="./templates.js"></script>
+  <script src="./modules/map/map.module.js"></script>
+  <!-- endbuild -->
 </html>

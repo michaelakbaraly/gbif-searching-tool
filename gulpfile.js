@@ -3,27 +3,17 @@ var connect = require("gulp-connect");
 var concat = require("gulp-concat");
 var uglify = require("gulp-uglify");
 var karma = require("gulp-karma");
+var usemin = require("gulp-usemin");
+var templateCache = require('gulp-angular-templatecache');
 
-var config = {
-  lib: [
-    "bower_components/angular/angular.js"
-  ],
-  css: {
-    files: [
-      "bower_components/bootstrap/dist/css/bootstrap.css",
-      "bower_components/bootstrap/dist/css/bootstrap.css.map"
-    ]
-  }
-};
-
-gulp.task("connect-dev", function () {
+gulp.task("connect:dev", function () {
   connect.server({
     root: "app",
     livereload: true
   });
 });
 
-gulp.task("connect-dist", function () {
+gulp.task("connect:dist", function () {
   connect.server({
     root: "dist",
     livereload: true
@@ -31,12 +21,12 @@ gulp.task("connect-dist", function () {
 });
 
 gulp.task("reload", function () {
-  gulp.src("./app/*.html")
+  gulp.src("./app/**/*.html")
     .pipe(connect.reload());
 });
 
 gulp.task("watch", function () {
-  gulp.watch(["./app/*.html", "./app/*.js"], ["reload"]);
+  gulp.watch(["./app/**/*.html", "./app/**/*.js"], ["templates", "reload"]);
 });
 
 gulp.task("test", function () {
@@ -50,21 +40,23 @@ gulp.task("test", function () {
     });
 });
 
-gulp.task("concat", function () {
-  return gulp.src(config.lib)
-    .pipe(concat("lib.js"))
+gulp.task("usemin", function () {
+  return gulp.src("./app/index.html")
+    .pipe(usemin({
+      lib: [uglify()],
+      app: [uglify()]
+    }))
+    .pipe(gulp.dest("dist/"));
+});
+
+gulp.task("templates", function () {
+  console.log("forjeo")
+  gulp.src("./app/modules/**/*.html")
+    .pipe(templateCache("templates.js", {
+      standalone: true
+    }))
     .pipe(gulp.dest("app"));
 });
 
-gulp.task("compress", function () {
-  return gulp.src("lib.js")
-    .pipe(uglify())
-    .pipe(gulp.dest("dist"));
-});
-
-gulp.task("copy-css", function () {
-  gulp.src(config.css.files)
-    .pipe(gulp.dest("app/style"));
-});
-
-gulp.task("dev", ["copy-css", "concat", "connect-dev", "watch"]);
+gulp.task("default", ["templates", "connect:dev", "watch"]);
+gulp.task("dist", ["usemin", "connect:dist"]);
