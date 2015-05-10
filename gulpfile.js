@@ -7,7 +7,13 @@ var karma = require("gulp-karma");
 var config = {
   lib: [
     "bower_components/angular/angular.js"
-  ]
+  ],
+  css: {
+    files: [
+      "bower_components/bootstrap/dist/css/bootstrap.css",
+      "bower_components/bootstrap/dist/css/bootstrap.css.map"
+    ]
+  }
 };
 
 gulp.task("connect-dev", function () {
@@ -56,4 +62,9 @@ gulp.task("compress", function () {
     .pipe(gulp.dest("dist"));
 });
 
-gulp.task("dev", ["concat", "connect-dev", "watch"]);
+gulp.task("copy-css", function () {
+  gulp.src(config.css.files)
+    .pipe(gulp.dest("app/style"));
+});
+
+gulp.task("dev", ["copy-css", "concat", "connect-dev", "watch"]);
