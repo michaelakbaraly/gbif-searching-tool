@@ -1,1 +1,1 @@
-angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("map/map.tpl.html","<h2>hello world</h2>");}]);
+angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("map/map.tpl.html","<div>\n  <gbif-map></gbif-map>\n</div>");}]);

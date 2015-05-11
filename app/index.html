@@ -3,6 +3,7 @@
     <title>gbif-searching-tool</title>
     <!-- build:css css/ext.css -->
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/leaflet/dist/leaflet.css">
     <!-- endbuild -->
   </head>
   <body ng-app="gbif-tool">
@@ -14,10 +15,13 @@
 
   <!-- build:lib js/lib.js -->
   <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
   <!-- endbuild -->
   <!-- build:app js/app.js -->
   <script src="./app.module.js"></script>
   <script src="./templates.js"></script>
   <script src="./modules/map/map.module.js"></script>
+  <script src="./modules/map/map.ctrl.js"></script>
+  <script src="./modules/map/map.directive.js"></script>
   <!-- endbuild -->
 </html>

@@ -5,7 +5,15 @@ module.exports = function(config){
 
     // list of files / patterns to load in the browser
     files: [
-      {pattern: "app/**/*.js", watched: true, included: true, served: true}
+      "app/bower_components/angular/angular.js",
+      "app/bower_components/angular-mocks/angular-mocks.js",
+      "app/bower_components/jquery/dist/jquery.js",
+      "app/bower_components/leaflet/dist/leaflet-src.js",
+      "app/app.module.js",
+      {pattern: "app/modules/**/*.module.js", watched: true, included: true, served: true},
+      {pattern: "app/modules/**/*.ctrl.js", watched: true, included: true, served: true},
+      {pattern: "app/modules/**/*.directive.js", watched: true, included: true, served: true},
+      "test/**/*.js"
     ],
 
     // list of files to exclude
