@@ -1,1 +1,2 @@
-angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("map/map.tpl.html","<div>\n  <gbif-map></gbif-map>\n</div>");}]);
+angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("map/map.tpl.html","<gbif-map search=\"{{search}}\"></gbif-map>\n");
+$templateCache.put("search/search.tpl.html","<div>\n  <input type=\"text\" class=\"form-control\" ng-model=\"search\">\n  {{ search }}\n  <div ng-include=\"\'map/map.tpl.html\'\"></div>\n</div>");}]);

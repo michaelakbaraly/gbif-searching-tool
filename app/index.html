@@ -7,9 +7,9 @@
     <!-- endbuild -->
   </head>
   <body ng-app="gbif-tool">
-    <div class="container">
+    <div ng-controller="SearchController as vm" class="container">
       <h1>GBIF Searching Tool</h1>
-      <div ng-include="'map/map.tpl.html'"></div>
+      <div ng-include="'search/search.tpl.html'"></div>
     </div>
   </body>
 
@@ -22,6 +22,9 @@
   <script src="./templates.js"></script>
   <script src="./modules/map/map.module.js"></script>
   <script src="./modules/map/map.ctrl.js"></script>
+  <script src="./modules/map/map.service.js"></script>
   <script src="./modules/map/map.directive.js"></script>
+  <script src="./modules/search/search.module.js"></script>
+  <script src="./modules/search/search.ctrl.js"></script>
   <!-- endbuild -->
 </html>

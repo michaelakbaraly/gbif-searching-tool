@@ -50,7 +50,6 @@ gulp.task("usemin", function () {
 });
 
 gulp.task("templates", function () {
-  console.log("forjeo")
   gulp.src("./app/modules/**/*.html")
     .pipe(templateCache("templates.js", {
       standalone: true

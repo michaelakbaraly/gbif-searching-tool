@@ -12,6 +12,7 @@ module.exports = function(config){
       "app/app.module.js",
       {pattern: "app/modules/**/*.module.js", watched: true, included: true, served: true},
       {pattern: "app/modules/**/*.ctrl.js", watched: true, included: true, served: true},
+      {pattern: "app/modules/**/*.service.js", watched: true, included: true, served: true},
       {pattern: "app/modules/**/*.directive.js", watched: true, included: true, served: true},
       "test/**/*.js"
     ],
