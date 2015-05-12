@@ -11,14 +11,15 @@ describe("Service: SearchService", function () {
   describe("the find method", function () {
     it("should call the Search API", function () {
       var search = "pica";
-      httpBackend.expectGET("http://api.gbif.org/v1/species/search?q=" + search).respond("200", {
+      httpBackend.expectGET("http://api.gbif.org/v1/species/match?verbose=true&name=" + search).respond("200", {
         results: [
           {
-            key: "5229490"
+            usageKey: "5229490"
           }
         ]
       });
       SearchService.find(search);
+      httpBackend.flush();
     });
   });
 });

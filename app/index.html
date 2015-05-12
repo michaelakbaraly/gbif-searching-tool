@@ -9,7 +9,7 @@
   <body ng-app="gbif-tool">
     <div ng-controller="SearchController" class="container">
       <h1>GBIF Searching Tool</h1>
-      <div ng-include="'search/search.tpl.html'"></div>
+      <div ng-controller="MainController as mainController" ng-include="'app.tpl.html'"></div>
     </div>
   </body>
 
@@ -18,8 +18,9 @@
   <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
   <!-- endbuild -->
   <!-- build:app js/app.js -->
-  <script src="./app.module.js"></script>
   <script src="./templates.js"></script>
+  <script src="./app.module.js"></script>
+  <script src="./app.ctrl.js"></script>
   <script src="./modules/map/map.module.js"></script>
   <script src="./modules/map/map.ctrl.js"></script>
   <script src="./modules/map/map.service.js"></script>

@@ -3,13 +3,15 @@
     .controller("SearchController", SearchController);
 
   function SearchController($scope, SearchService) {
-    $scope.search = "";
-    $scope.find = find;
+    var vm = this;
+    vm.find = find;
+    vm.result = {};
 
     function find(search) {
       SearchService.find(search)
         .then(function (response) {
-          $scope.results = response.data.results;
+          vm.result = response.data;
+          $scope.$parent.mainController.setUsageKey(vm.result.usageKey);
         }, function () {
           $scope.error = "Error";
         });
