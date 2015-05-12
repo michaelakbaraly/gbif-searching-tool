@@ -50,7 +50,7 @@ gulp.task("usemin", function () {
 });
 
 gulp.task("templates", function () {
-  gulp.src("./app/modules/**/*.html")
+  gulp.src(["app/app.tpl.html", "./app/modules/**/*.html"])
     .pipe(templateCache("templates.js", {
       standalone: true
     }))
@@ -58,4 +58,4 @@ gulp.task("templates", function () {
 });
 
 gulp.task("default", ["templates", "connect:dev", "watch"]);
-gulp.task("dist", ["usemin", "connect:dist"]);
+gulp.task("dist", ["templates", "usemin", "connect:dist"]);

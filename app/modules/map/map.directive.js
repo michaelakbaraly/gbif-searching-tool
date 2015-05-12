@@ -1,6 +1,6 @@
 (function () {
   angular.module("gbif-map")
-    .directive("gbifMap", mapDirective);
+    .directive("gbifMap", ["MapService", mapDirective]);
 
   function mapDirective(MapService) {
     return {

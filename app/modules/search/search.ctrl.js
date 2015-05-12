@@ -1,6 +1,6 @@
 (function () {
   angular.module("gbif-search")
-    .controller("SearchController", SearchController);
+    .controller("SearchController", ["$scope", "SearchService", SearchController]);
 
   function SearchController($scope, SearchService) {
     var vm = this;

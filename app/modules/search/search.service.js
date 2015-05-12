@@ -1,6 +1,6 @@
 (function () {
   angular.module("gbif-search")
-    .factory("SearchService", SearchService);
+    .factory("SearchService", ["$http", SearchService]);
 
   function SearchService($http) {
     var url = "http://api.gbif.org/v1/species/match?verbose=true&name=";
