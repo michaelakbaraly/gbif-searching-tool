@@ -1,10 +1,9 @@
 var gulp = require("gulp");
 var connect = require("gulp-connect");
-var concat = require("gulp-concat");
 var uglify = require("gulp-uglify");
 var karma = require("gulp-karma");
 var usemin = require("gulp-usemin");
-var templateCache = require('gulp-angular-templatecache');
+var templateCache = require("gulp-angular-templatecache");
 
 gulp.task("connect:dev", function () {
   connect.server({
@@ -29,11 +28,24 @@ gulp.task("watch", function () {
   gulp.watch(["./app/**/*.html", "./app/**/*.js"], ["templates", "reload"]);
 });
 
+var testFiles = [
+  "app/bower_components/angular/angular.js",
+  "app/bower_components/angular-mocks/angular-mocks.js",
+  "app/bower_components/jquery/dist/jquery.js",
+  "app/bower_components/leaflet/dist/leaflet-src.js",
+  "app/bower_components/lodash/lodash.js",
+  "app/app.module.js",
+  "app/modules/**/*.module.js",
+  "app/modules/**/*.ctrl.js",
+  "app/modules/**/*.service.js",
+  "app/modules/**/*.directive.js",
+  "test/**/*.js"
+];
 gulp.task("test", function () {
-  return gulp.src("test/*")
+  return gulp.src(testFiles)
     .pipe(karma({
       configFile: "karma.conf.js",
-      action: "run"
+      action: "watch"
     }))
     .on("error", function (err) {
       throw err;

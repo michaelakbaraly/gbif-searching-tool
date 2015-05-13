@@ -1,4 +1,4 @@
-module.exports = function(config){
+module.exports = function (config) {
   config.set({
     // base path, that will be used to resolve files and exclude
     basePath: ".",
@@ -9,6 +9,7 @@ module.exports = function(config){
       "app/bower_components/angular-mocks/angular-mocks.js",
       "app/bower_components/jquery/dist/jquery.js",
       "app/bower_components/leaflet/dist/leaflet-src.js",
+      "app/bower_components/lodash/lodash.js",
       "app/app.module.js",
       {pattern: "app/modules/**/*.module.js", watched: true, included: true, served: true},
       {pattern: "app/modules/**/*.ctrl.js", watched: true, included: true, served: true},
@@ -18,9 +19,7 @@ module.exports = function(config){
     ],
 
     // list of files to exclude
-    exclude: [
-
-    ],
+    exclude: [],
 
     // test results reporter to use
     // possible values: "dots", "progress", "junit", "growl", "coverage"

@@ -18,18 +18,20 @@ describe("Service: MapService", function () {
     });
   }));
 
-  describe("the setBackground method", function() {
-    it("should call the tileLayer method", function() {
+  describe("the setBackground method", function () {
+    it("should call the tileLayer method", function () {
       MapService.setBackground(map);
       expect(L.tileLayer).toHaveBeenCalledWith("http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png", {
-        subdomains: ['otile1','otile2','otile3','otile4']
+        subdomains: ["otile1", "otile2", "otile3", "otile4"]
       });
     });
   });
   describe("the updateTileLayer method", function () {
     describe("when the tileLayer is defined", function () {
       it("should call the map removeLayer method", function () {
-        var tileLayer = {};
+        var tileLayer = {
+          key: "value"
+        };
         MapService.updateTileLayer(map, tileLayer, null);
         expect(map.removeLayer).toHaveBeenCalled();
       });
@@ -53,8 +55,7 @@ describe("Service: MapService", function () {
     });
     describe("when the tileLayer is not defined", function () {
       it("should not call the leaflet removeLayer method", function () {
-        var tileLayer = undefined;
-        MapService.updateTileLayer(map, tileLayer, null);
+        MapService.updateTileLayer(map, null, null);
         expect(map.removeLayer).not.toHaveBeenCalled();
       });
     });

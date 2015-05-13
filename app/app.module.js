@@ -1,3 +1,15 @@
 (function () {
-  angular.module("gbif-tool", ["templates", "gbif-search", "gbif-map"]);
+  angular.module("gbif-tool", ["ui.router", "templates", "gbif-search", "gbif-map"])
+    .config(function($stateProvider, $urlRouterProvider) {
+
+      $urlRouterProvider.otherwise("/search");
+
+      $stateProvider
+        .state("search", {
+          url: "/search/:search",
+          templateUrl: "search/search.tpl.html",
+          controller: "SearchController",
+          controllerAs: "searchController"
+        });
+    });
 })();

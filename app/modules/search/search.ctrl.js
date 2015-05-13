@@ -1,19 +1,28 @@
 (function () {
   angular.module("gbif-search")
-    .controller("SearchController", ["$scope", "SearchService", SearchController]);
+    .controller("SearchController", ["SearchService", "$state", SearchController]);
 
-  function SearchController($scope, SearchService) {
+  function SearchController(SearchService, $state) {
     var vm = this;
+
+    vm.search = $state.params.search ? $state.params.search : undefined;
+    vm.usageKey = undefined;
+    vm.result = undefined;
+    vm.error = undefined;
     vm.find = find;
-    vm.result = {};
+
+    if (vm.search) {
+      vm.find(vm.search);
+    }
 
     function find(search) {
       SearchService.find(search)
         .then(function (response) {
           vm.result = response.data;
-          $scope.$parent.mainController.setUsageKey(vm.result.usageKey);
-        }, function () {
-          $scope.error = "Error";
+          vm.usageKey = vm.result.usageKey;
+          $state.go("search", {search: search});
+        }, function (error) {
+          vm.error = error;
         });
     }
   }

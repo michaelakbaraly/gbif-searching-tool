@@ -10,11 +10,15 @@ describe("Directive: MapDirective", function () {
     spyOn(L, "map").and.callFake(function () {
       return {};
     });
-    spyOn(MapService, "setBackground").and.callFake(function() {});
-    spyOn(MapService, "updateTileLayer").and.callFake(function() {});
+    spyOn(MapService, "setBackground").and.callFake(function () {
+      //fake implementation
+    });
+    spyOn(MapService, "updateTileLayer").and.callFake(function () {
+      //fake implementation
+    });
 
     element =
-      "<gbif-map search=\"pica\"></gbif-map>";
+      "<gbif-map key=\"12345\"></gbif-map>";
     element = $compile(element)(scope);
     scope.$digest();
   }));
@@ -31,11 +35,7 @@ describe("Directive: MapDirective", function () {
     expect(MapService.updateTileLayer).toHaveBeenCalled();
   });
 
-  it("should set search in scope", function () {
-    expect(element.isolateScope().search).toEqual("pica");
-  });
-
-  it("should call MapService updateTileLayer method each time search is changing", function() {
+  it("should call MapService updateTileLayer method each time search is changing", function () {
     $(element).attr("search", "canis");
     expect(MapService.updateTileLayer).toHaveBeenCalled();
     $(element).attr("search", "canis lupus");

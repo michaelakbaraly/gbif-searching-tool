@@ -1,6 +1,6 @@
 <div>
-  <input type="text" class="form-control" ng-model="mainController.search">
-  <button ng-click="searchController.find(mainController.search)">Search</button>
+  <input type="text" class="form-control" ng-model="searchController.search">
+  <button ng-click="searchController.find(searchController.search)">Search</button>
   <div class="results">
     <table class="table table-condensed">
       <thead>
@@ -10,7 +10,7 @@
         <th>Rank</th>
       </thead>
       <tbody>
-        <tr ng-click="mainController.setUsageKey(searchController.result.usageKey)">
+        <tr ng-click="searchController.setUsageKey(searchController.result.usageKey)">
           <td>{{searchController.result.usageKey}}</td>
           <td>{{searchController.result.canonicalName}}</td>
           <td>{{searchController.result.scientificName}}</td>
@@ -19,5 +19,7 @@
         </tr>
       </tbody>
     </table>
+    <div ng-include="'map/map.tpl.html'"></div>
+
   </div>
 </div>
