@@ -7,7 +7,7 @@
     var suggestURL = "http://api.gbif.org/v1/species/suggest?q=";
     return {
       find: function (search) {
-        return $http.get(matchURL + search);
+        return $http.get(matchURL + search, {cache: true});
       },
       suggest: function (search) {
         return $http.get(suggestURL + search);
