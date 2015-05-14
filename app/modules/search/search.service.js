@@ -3,10 +3,14 @@
     .factory("SearchService", ["$http", SearchService]);
 
   function SearchService($http) {
-    var url = "http://api.gbif.org/v1/species/match?verbose=true&name=";
+    var matchURL = "http://api.gbif.org/v1/species/match?verbose=true&name=";
+    var suggestURL = "http://api.gbif.org/v1/species/suggest?q=";
     return {
       find: function (search) {
-        return $http.get(url + search);
+        return $http.get(matchURL + search);
+      },
+      suggest: function (search) {
+        return $http.get(suggestURL + search);
       }
     };
   }

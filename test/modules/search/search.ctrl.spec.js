@@ -16,6 +16,10 @@ describe("Controller: SearchController", function () {
         find: function () {
           deferred = q.defer();
           return deferred.promise;
+        },
+        suggest: function () {
+          deferred = q.defer();
+          return deferred.promise;
         }
       };
       state = {
@@ -52,13 +56,45 @@ describe("Controller: SearchController", function () {
         });
       });
       describe("on error", function () {
-        it("should set the results", function () {
+        it("should set the error message", function () {
           spyOn(SearchService, "find").and.callThrough();
           vm.find();
-          deferred.reject("Error");
+          deferred.reject("Something is wrong");
           scope.$digest();
           expect(SearchService.find).toHaveBeenCalled();
-          expect(vm.error).toEqual("Error");
+          expect(vm.alerts).toEqual([{type: "danger", content: "Something is wrong"}]);
+        });
+      });
+    });
+    describe("the suggest method", function () {
+      describe("on success", function () {
+        var expectedResponse;
+        beforeEach(function () {
+          expectedResponse = {
+            data: {
+              key: 123456,
+              canonicalName: "Puma",
+              rank: "GENUS"
+            }
+          };
+          spyOn(SearchService, "suggest").and.callThrough();
+        });
+        it("should set the suggestions", function () {
+          vm.suggest();
+          deferred.resolve(expectedResponse);
+          scope.$digest();
+          expect(SearchService.suggest).toHaveBeenCalled();
+          expect(vm.suggestions).toEqual(expectedResponse.data);
+        });
+      });
+      describe("on error", function () {
+        it("should set the results", function () {
+          spyOn(SearchService, "suggest").and.callThrough();
+          vm.suggest();
+          deferred.reject("Suggestion service is not available");
+          scope.$digest();
+          expect(SearchService.suggest).toHaveBeenCalled();
+          expect(vm.alerts).toEqual([{type: "warning", content: "Suggestion service is not available"}]);
         });
       });
     });
@@ -69,7 +105,7 @@ describe("Controller: SearchController", function () {
     beforeEach(inject(function ($controller) {
       state = {
         params: {
-          search: undefined
+          //no search params
         }
       };
       controller = $controller("SearchController", {SearchService: SearchService, $state: state});

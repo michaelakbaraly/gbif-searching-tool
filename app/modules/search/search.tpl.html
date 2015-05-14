@@ -1,25 +1,40 @@
 <div>
-  <input type="text" class="form-control" ng-model="searchController.search">
-  <button ng-click="searchController.find(searchController.search)">Search</button>
+  <div>
+    <alert ng-repeat="alert in searchController.alerts" type="{{alert.type}}" close="searchController.closeAlert($index)">{{alert.content}}</alert>
+
+    <form name="form" no-validate>
+      <div class="form-group">
+        <input name="search" type="text" class="form-control"
+               ng-model="searchController.search"
+               ng-change="searchController.suggest(searchController.search)"
+               typeahead="suggestion.canonicalName for suggestion in searchController.suggestions"/>
+      </div>
+      <div class="pull-right">
+        <button class="btn btn-lg btn-default"
+                ng-click="searchController.find(searchController.search)"
+                ng-disabled="!searchController.search">Search
+        </button>
+      </div>
+    </form>
+  </div>
   <div class="results">
     <table class="table table-condensed">
       <thead>
-        <th>Key</th>
-        <th>Canonical Name</th>
-        <th>Scientific Name</th>
-        <th>Rank</th>
+      <th>Key</th>
+      <th>Canonical Name</th>
+      <th>Scientific Name</th>
+      <th>Rank</th>
       </thead>
       <tbody>
-        <tr ng-click="searchController.setUsageKey(searchController.result.usageKey)">
-          <td>{{searchController.result.usageKey}}</td>
-          <td>{{searchController.result.canonicalName}}</td>
-          <td>{{searchController.result.scientificName}}</td>
-          <td>{{searchController.result.rank}}</td>
-          <td>{{searchController.result.records}}</td>
-        </tr>
+      <tr ng-click="searchController.setUsageKey(searchController.result.usageKey)">
+        <td>{{searchController.result.usageKey}}</td>
+        <td>{{searchController.result.canonicalName}}</td>
+        <td>{{searchController.result.scientificName}}</td>
+        <td>{{searchController.result.rank}}</td>
+        <td>{{searchController.result.records}}</td>
+      </tr>
       </tbody>
     </table>
     <div ng-include="'map/map.tpl.html'"></div>
-
   </div>
 </div>

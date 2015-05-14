@@ -1,5 +1,5 @@
 (function () {
-  angular.module("gbif-tool", ["ui.router", "templates", "gbif-search", "gbif-map"])
+  angular.module("gbif-tool", ["ui.bootstrap", "ui.router", "templates", "gbif-search", "gbif-map"])
     .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
 
       $urlRouterProvider.otherwise("/search");

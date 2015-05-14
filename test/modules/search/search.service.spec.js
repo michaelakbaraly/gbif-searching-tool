@@ -22,4 +22,19 @@ describe("Service: SearchService", function () {
       httpBackend.flush();
     });
   });
+  describe("the getSuggestion method", function () {
+    it("should call the Suggest API", function () {
+      var search = "puma";
+      httpBackend.expectGET("http://api.gbif.org/v1/species/suggest?q=" + search).respond("200", {
+        results: [
+          {
+            canonicalName: "Puma concolor",
+            key: "2435099"
+          }
+        ]
+      });
+      SearchService.suggest(search);
+      httpBackend.flush();
+    });
+  });
 });

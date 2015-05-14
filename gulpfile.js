@@ -4,6 +4,8 @@ var uglify = require("gulp-uglify");
 var karma = require("gulp-karma");
 var usemin = require("gulp-usemin");
 var templateCache = require("gulp-angular-templatecache");
+var sass = require("gulp-sass");
+var sourcemaps = require("gulp-sourcemaps");
 
 gulp.task("connect:dev", function () {
   connect.server({
@@ -17,6 +19,12 @@ gulp.task("connect:dist", function () {
     root: "dist",
     livereload: true
   });
+});
+
+gulp.task("sass", function () {
+  gulp.src("./app/style/*.scss")
+    .pipe(sass().on("error", sass.logError))
+    .pipe(gulp.dest("./app/style/"));
 });
 
 gulp.task("reload", function () {
@@ -56,7 +64,7 @@ gulp.task("usemin", function () {
   return gulp.src("./app/index.html")
     .pipe(usemin({
       lib: [uglify()],
-      app: [uglify()]
+      app: []
     }))
     .pipe(gulp.dest("dist/"));
 });
@@ -69,5 +77,5 @@ gulp.task("templates", function () {
     .pipe(gulp.dest("app"));
 });
 
-gulp.task("default", ["templates", "connect:dev", "watch"]);
+gulp.task("default", ["sass", "templates", "connect:dev", "watch"]);
 gulp.task("dist", ["templates", "usemin", "connect:dist"]);
