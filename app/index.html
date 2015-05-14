@@ -8,9 +8,22 @@
     <!-- endbuild -->
   </head>
   <body ng-app="gbif-tool">
-    <div ng-controller="MainController as mainController" class="container">
-      <h1>GBIF Search Tool</h1>
-      <div ui-view></div>
+    <div ng-controller="MainController as mainController">
+      <nav class="navbar navbar-default">
+        <div>
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">GBIF Search Tool</a>
+          </div>
+        </div>
+      </nav>
+      <div class="container" ui-view></div>
+      <footer class="footer">
+        <div class="container">
+          <p class="pull-right">
+            <img src="assets/images/gbif.png"/>
+          </p>
+        </div>
+      </footer>
     </div>
   </body>
 

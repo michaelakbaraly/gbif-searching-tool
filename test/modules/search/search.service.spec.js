@@ -37,4 +37,30 @@ describe("Service: SearchService", function () {
       httpBackend.flush();
     });
   });
+  describe("the storeLastSearch method", function () {
+    describe("when lastSearch item has already been used", function() {
+      it("should put the last Search in the localeStorage", function () {
+        spyOn(localStorage, "getItem").and.returnValue("[\"oldSearch\"]");
+        spyOn(localStorage, "setItem").and.callFake(function () {
+          //fake implementation
+        });
+        var search = "Pica";
+        SearchService.storeLastSearch(search);
+        expect(localStorage.getItem).toHaveBeenCalledWith("lastSearches");
+        expect(localStorage.setItem).toHaveBeenCalledWith("lastSearches", "[\"oldSearch\",\"Pica\"]");
+      });
+    });
+    describe("when lastSearch item has already been used", function() {
+      it("should put the last Search in the localeStorage", function () {
+        spyOn(localStorage, "getItem").and.returnValue(null);
+        spyOn(localStorage, "setItem").and.callFake(function () {
+          //fake implementation
+        });
+        var search = "Pica";
+        SearchService.storeLastSearch(search);
+        expect(localStorage.getItem).toHaveBeenCalledWith("lastSearches");
+        expect(localStorage.setItem).toHaveBeenCalledWith("lastSearches", "[\"Pica\"]");
+      });
+    });
+  });
 });

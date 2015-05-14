@@ -20,6 +20,12 @@ describe("Controller: SearchController", function () {
         suggest: function () {
           deferred = q.defer();
           return deferred.promise;
+        },
+        retrieveLastSearches: function () {
+          //fake implementation
+        },
+        storeLastSearch: function () {
+          //fake implementation
         }
       };
       state = {
@@ -46,12 +52,14 @@ describe("Controller: SearchController", function () {
             }
           };
           spyOn(SearchService, "find").and.callThrough();
+          spyOn(SearchService, "storeLastSearch").and.callThrough();
         });
         it("should set the results", function () {
           vm.find();
           deferred.resolve(expectedResponse);
           scope.$digest();
           expect(SearchService.find).toHaveBeenCalled();
+          expect(SearchService.storeLastSearch).toHaveBeenCalled();
           expect(vm.result).toEqual(expectedResponse.data);
         });
       });

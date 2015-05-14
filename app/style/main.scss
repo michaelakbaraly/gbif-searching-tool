@@ -5,3 +5,22 @@ body {
 .dropdown-menu {
   z-index: 100000;
 }
+
+#search-form {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid lightgreen;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 5px 0;
+  background-color: #f5f5f5;
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}

@@ -11,6 +11,22 @@
       },
       suggest: function (search) {
         return $http.get(suggestURL + search);
+      },
+      storeLastSearch: function (search) {
+        var lastSearches = JSON.parse(localStorage.getItem("lastSearches"));
+        if (_.isEmpty(lastSearches)) {
+          localStorage.setItem("lastSearches", JSON.stringify([search]));
+        } else {
+          lastSearches.push(search);
+          localStorage.setItem("lastSearches", JSON.stringify(lastSearches));
+        }
+      },
+      retrieveLastSearches: function () {
+        var lastSearches = JSON.parse(localStorage.getItem("lastSearches"));
+        if (_.isEmpty(lastSearches)) {
+          return undefined;
+        }
+        return _.uniq(JSON.parse(localStorage.getItem("lastSearches")).reverse());
       }
     };
   }

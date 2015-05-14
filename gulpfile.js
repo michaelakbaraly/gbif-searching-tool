@@ -33,7 +33,7 @@ gulp.task("reload", function () {
 });
 
 gulp.task("watch", function () {
-  gulp.watch(["./app/**/*.html", "./app/**/*.js"], ["templates", "reload"]);
+  gulp.watch(["./app/**/*.html", "./app/**/*.js", "./app/style/*.scss"], ["sass", "templates", "reload"]);
 });
 
 var testFiles = [
@@ -77,5 +77,10 @@ gulp.task("templates", function () {
     .pipe(gulp.dest("app"));
 });
 
+gulp.task("assets", function() {
+  gulp.src("app/assets/**/*")
+    .pipe(gulp.dest("dist/assets"));
+});
+
 gulp.task("default", ["sass", "templates", "connect:dev", "watch"]);
-gulp.task("dist", ["templates", "usemin", "connect:dist"]);
+gulp.task("dist", ["assets", "templates", "usemin", "connect:dist"]);

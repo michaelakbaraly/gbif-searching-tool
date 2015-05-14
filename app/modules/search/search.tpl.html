@@ -1,40 +1,59 @@
 <div>
-  <div>
-    <alert ng-repeat="alert in searchController.alerts" type="{{alert.type}}" close="searchController.closeAlert($index)">{{alert.content}}</alert>
-
-    <form name="form" no-validate>
-      <div class="form-group">
-        <input name="search" type="text" class="form-control"
-               ng-model="searchController.search"
-               ng-change="searchController.suggest(searchController.search)"
-               typeahead="suggestion.canonicalName for suggestion in searchController.suggestions"/>
+  <div id="search-form" class="row">
+    <div class="col-md-12">
+      <alert ng-repeat="alert in searchController.alerts" type="{{alert.type}}" close="searchController.closeAlert($index)">{{alert.content}}</alert>
+      <div class="row">
+        <div class="col-md-12">
+          <form name="form" no-validate>
+            <div class="form-group">
+              <input name="search" type="text" class="form-control"
+                     ng-model="searchController.search"
+                     ng-change="searchController.suggest(searchController.search)"
+                     typeahead="suggestion.canonicalName for suggestion in searchController.suggestions"/>
+            </div>
+            <div class="pull-right">
+              <button class="btn btn-default"
+                      ng-click="searchController.find(searchController.search)"
+                      ng-disabled="!searchController.search">Search
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div class="pull-right">
-        <button class="btn btn-lg btn-default"
-                ng-click="searchController.find(searchController.search)"
-                ng-disabled="!searchController.search">Search
-        </button>
-      </div>
-    </form>
+    </div>
   </div>
-  <div class="results">
-    <table class="table table-condensed">
-      <thead>
-      <th>Key</th>
-      <th>Canonical Name</th>
-      <th>Scientific Name</th>
-      <th>Rank</th>
-      </thead>
-      <tbody>
-      <tr ng-click="searchController.setUsageKey(searchController.result.usageKey)">
-        <td>{{searchController.result.usageKey}}</td>
-        <td>{{searchController.result.canonicalName}}</td>
-        <td>{{searchController.result.scientificName}}</td>
-        <td>{{searchController.result.rank}}</td>
-        <td>{{searchController.result.records}}</td>
-      </tr>
-      </tbody>
-    </table>
-    <div ng-include="'map/map.tpl.html'"></div>
+  <div class="row results">
+    <div class="col-md-10">
+      <div ng-include="'map/map.tpl.html'"></div>
+      <table class="table table-condensed">
+        <thead>
+        <th>Key</th>
+        <th>Canonical Name</th>
+        <th>Scientific Name</th>
+        <th>Rank</th>
+        </thead>
+        <tbody>
+        <tr ng-click="searchController.setUsageKey(searchController.result.usageKey)">
+          <td>{{searchController.result.usageKey}}</td>
+          <td>{{searchController.result.canonicalName}}</td>
+          <td>{{searchController.result.scientificName}}</td>
+          <td>{{searchController.result.rank}}</td>
+          <td>{{searchController.result.records}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-2">
+      <div class="hidden-sm hidden-xs">
+        <h3>Last searches</h3>
+        <ul>
+          <li ng-repeat="lastSearch in searchController.lastSearches | limitTo:10">
+            <a ui-sref="search({search:lastSearch})">{{ lastSearch }}</a>
+          </li>
+        </ul>
+        <ul>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>

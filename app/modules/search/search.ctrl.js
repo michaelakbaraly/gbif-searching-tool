@@ -13,6 +13,7 @@
     vm.find = find;
     vm.suggest = suggest;
     vm.closeAlert = closeAlert;
+    vm.lastSearches = retrieveLastSearches();
 
     if (vm.search) {
       vm.find(vm.search);
@@ -23,6 +24,7 @@
         .then(function (response) {
           vm.result = response.data;
           vm.usageKey = vm.result.usageKey;
+          SearchService.storeLastSearch(search);
           $state.go("search", {search: search});
         }, function (error) {
           vm.alerts.push({
@@ -46,6 +48,10 @@
 
     function closeAlert(index) {
       vm.alerts.splice(index, 1);
+    }
+
+    function retrieveLastSearches() {
+      return SearchService.retrieveLastSearches();
     }
   }
 })();
