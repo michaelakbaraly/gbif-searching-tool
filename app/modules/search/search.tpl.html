@@ -45,7 +45,7 @@
     </div>
     <div class="col-md-2">
       <div class="hidden-sm hidden-xs">
-        <h3>Last searches</h3>
+        <h3>Last search requests</h3>
         <ul>
           <li ng-repeat="lastSearch in searchController.lastSearches | limitTo:10">
             <a ui-sref="search({search:lastSearch})">{{ lastSearch }}</a>
