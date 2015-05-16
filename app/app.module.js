@@ -12,7 +12,7 @@
           controllerAs: "searchController"
         });
     }])
-    .config(function ($httpProvider) {
+    .config(["$httpProvider", function ($httpProvider) {
       $httpProvider.interceptors.push("AppHttpInterceptor");
-    });
+    }]);
 })();
