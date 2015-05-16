@@ -11,5 +11,8 @@
           controller: "SearchController",
           controllerAs: "searchController"
         });
-    }]);
+    }])
+    .config(function ($httpProvider) {
+      $httpProvider.interceptors.push("AppHttpInterceptor");
+    });
 })();

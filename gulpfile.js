@@ -41,12 +41,16 @@ var testFiles = [
   "app/bower_components/angular-mocks/angular-mocks.js",
   "app/bower_components/jquery/dist/jquery.js",
   "app/bower_components/leaflet/dist/leaflet-src.js",
+  "app/bower_components/angular-bootstrap/ui-bootstrap.js",
+  "app/bower_components/angular-ui-router/release/angular-ui-router.js",
   "app/bower_components/lodash/lodash.js",
   "app/app.module.js",
+  "app/app.*.js",
   "app/modules/**/*.module.js",
   "app/modules/**/*.ctrl.js",
   "app/modules/**/*.service.js",
   "app/modules/**/*.directive.js",
+  "app/templates.js",
   "test/**/*.js"
 ];
 gulp.task("test", function () {

@@ -9,12 +9,16 @@ module.exports = function (config) {
       "app/bower_components/angular-mocks/angular-mocks.js",
       "app/bower_components/jquery/dist/jquery.js",
       "app/bower_components/leaflet/dist/leaflet-src.js",
+      "app/bower_components/angular-bootstrap/ui-bootstrap.js",
+      "app/bower_components/angular-ui-router/release/angular-ui-router.js",
       "app/bower_components/lodash/lodash.js",
       "app/app.module.js",
+      "app/app.*.js",
       {pattern: "app/modules/**/*.module.js", watched: true, included: true, served: true},
       {pattern: "app/modules/**/*.ctrl.js", watched: true, included: true, served: true},
       {pattern: "app/modules/**/*.service.js", watched: true, included: true, served: true},
       {pattern: "app/modules/**/*.directive.js", watched: true, included: true, served: true},
+      "app/templates.js",
       "test/**/*.js"
     ],
 
