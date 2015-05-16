@@ -34,6 +34,9 @@ How to run it?
 ---------------
 - Dev mode : gulp
 - Dist mode: gulp dist
+
+then: http://localhost:8080
+
 - Test mode: gulp test
  
  
