@@ -9,7 +9,6 @@
     vm.usageKey = undefined;
     vm.result = undefined;
     vm.alerts = [];
-    vm.warning = "warning";
     vm.find = find;
     vm.suggest = suggest;
     vm.closeAlert = closeAlert;
@@ -22,10 +21,17 @@
     function find(search) {
       SearchService.find(search)
         .then(function (response) {
-          vm.result = response.data;
-          vm.usageKey = vm.result.usageKey;
-          SearchService.storeLastSearch(search);
-          $state.go("search", {search: search});
+          if (response.data.matchType !== "NONE") {
+            vm.result = response.data;
+            vm.usageKey = vm.result.usageKey;
+            SearchService.storeLastSearch(search);
+            $state.go("search", {search: search});
+          } else {
+            vm.alerts.push({
+              type: "info",
+              content: "No results are matching your request"
+            });
+          }
         }, function (error) {
           vm.alerts.push({
             type: "danger",

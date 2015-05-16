@@ -1,49 +1,51 @@
 <html>
-  <head>
-    <title>gbif-searching-tool</title>
-    <!-- build:css css/ext.css -->
-    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="bower_components/leaflet/dist/leaflet.css">
-    <link rel="stylesheet" type="text/css" href="style/main.css">
-    <!-- endbuild -->
-  </head>
-  <body ng-app="gbif-tool">
-    <div ng-controller="MainController as mainController">
-      <nav class="navbar navbar-default">
-        <div>
+<head>
+  <meta name="viewport" content="width=device-width">
+  <title>gbif-searching-tool</title>
+  <!-- build:css css/style.css -->
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/leaflet/dist/leaflet.css">
+  <link rel="stylesheet" type="text/css" href="style/superhero.css">
+  <link rel="stylesheet" type="text/css" href="style/main.css">
+  <!-- endbuild -->
+</head>
+<body ng-app="gbif-tool">
+<div ng-controller="MainController as mainController">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-11">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">GBIF Search Tool</a>
+            <a class="navbar-brand" href="#">GBIF Searching Tool</a>
           </div>
         </div>
-      </nav>
-      <div class="container" ui-view></div>
-      <footer class="footer">
-        <div class="container">
-          <p class="pull-right">
-            <img src="assets/images/gbif.png"/>
-          </p>
+        <div class="hidden-xs col-xs-1">
+          <img src="assets/images/gbif.png">
         </div>
-      </footer>
+      </div>
     </div>
-  </body>
+  </nav>
+  <div class="container" ui-view></div>
+</div>
+</body>
 
-  <!-- build:lib js/lib.js -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
-  <script src="bower_components/lodash/lodash.js"></script>
-  <!-- endbuild -->
-  <!-- build:app js/app.js -->
-  <script src="./templates.js"></script>
-  <script src="./app.module.js"></script>
-  <script src="./app.ctrl.js"></script>
-  <script src="./modules/map/map.module.js"></script>
-  <script src="./modules/map/map.service.js"></script>
-  <script src="./modules/map/map.directive.js"></script>
-  <script src="./modules/search/search.module.js"></script>
-  <script src="./modules/search/search.ctrl.js"></script>
-  <script src="./modules/search/search.service.js"></script>
-  <!-- endbuild -->
+<!-- build:lib js/lib.js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/leaflet/dist/leaflet-src.js"></script>
+<script src="bower_components/lodash/lodash.js"></script>
+<!-- endbuild -->
+<!-- build:app js/app.js -->
+<script src="./templates.js"></script>
+<script src="./app.module.js"></script>
+<script src="./app.ctrl.js"></script>
+<script src="./modules/map/map.module.js"></script>
+<script src="./modules/map/map.service.js"></script>
+<script src="./modules/map/map.directive.js"></script>
+<script src="./modules/search/search.module.js"></script>
+<script src="./modules/search/search.ctrl.js"></script>
+<script src="./modules/search/search.service.js"></script>
+<!-- endbuild -->
 </html>

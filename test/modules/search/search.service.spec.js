@@ -38,7 +38,7 @@ describe("Service: SearchService", function () {
     });
   });
   describe("the storeLastSearch method", function () {
-    describe("when lastSearch item has already been used", function() {
+    describe("when lastSearch item has already been used", function () {
       it("should put the last Search in the localeStorage", function () {
         spyOn(localStorage, "getItem").and.returnValue("[\"oldSearch\"]");
         spyOn(localStorage, "setItem").and.callFake(function () {
@@ -50,7 +50,7 @@ describe("Service: SearchService", function () {
         expect(localStorage.setItem).toHaveBeenCalledWith("lastSearches", "[\"oldSearch\",\"Pica\"]");
       });
     });
-    describe("when lastSearch item has already been used", function() {
+    describe("when lastSearch item has already been used", function () {
       it("should put the last Search in the localeStorage", function () {
         spyOn(localStorage, "getItem").and.returnValue(null);
         spyOn(localStorage, "setItem").and.callFake(function () {

@@ -5,7 +5,7 @@ var karma = require("gulp-karma");
 var usemin = require("gulp-usemin");
 var templateCache = require("gulp-angular-templatecache");
 var sass = require("gulp-sass");
-var sourcemaps = require("gulp-sourcemaps");
+var minifyCss = require("gulp-minify-css");
 
 gulp.task("connect:dev", function () {
   connect.server({
@@ -64,7 +64,8 @@ gulp.task("usemin", function () {
   return gulp.src("./app/index.html")
     .pipe(usemin({
       lib: [uglify()],
-      app: []
+      app: [uglify()],
+      css: [minifyCss()]
     }))
     .pipe(gulp.dest("dist/"));
 });
@@ -77,10 +78,10 @@ gulp.task("templates", function () {
     .pipe(gulp.dest("app"));
 });
 
-gulp.task("assets", function() {
+gulp.task("assets", function () {
   gulp.src("app/assets/**/*")
     .pipe(gulp.dest("dist/assets"));
 });
 
 gulp.task("default", ["sass", "templates", "connect:dev", "watch"]);
-gulp.task("dist", ["assets", "templates", "usemin", "connect:dist"]);
+gulp.task("dist", ["assets", "sass", "templates", "usemin", "connect:dist"]);

@@ -5,11 +5,12 @@
   function mapDirective(MapService) {
     return {
       restrict: "E",
-      template: "<div id=\"gbif-map\" style=\"width:100%; height:500px\"></div>",
+      template: "<div id=\"gbif-map\" class=\"map\"></div>",
       link: function (scope, element, attrs) {
         var map = L.map("gbif-map", {
-          center: [0, 0],
-          zoom: 2
+          center: [20, 0],
+          zoom: 2,
+          minZoom: 2
         });
         MapService.setBackground(map);
 

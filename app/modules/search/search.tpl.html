@@ -1,9 +1,28 @@
 <div>
-  <div id="search-form" class="row">
+  <div class="row" id="search">
     <div class="col-md-12">
       <alert ng-repeat="alert in searchController.alerts" type="{{alert.type}}" close="searchController.closeAlert($index)">{{alert.content}}</alert>
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
+          <table ng-if="searchController.result" class="table table-condensed">
+            <thead>
+            <th>Key</th>
+            <th>Canonical Name</th>
+            <th>Scientific Name</th>
+            <th>Rank</th>
+            </thead>
+            <tbody>
+            <tr ng-click="searchController.setUsageKey(searchController.result.usageKey)">
+              <td>{{searchController.result.usageKey}}</td>
+              <td>{{searchController.result.canonicalName}}</td>
+              <td>{{searchController.result.scientificName}}</td>
+              <td>{{searchController.result.rank}}</td>
+              <td>{{searchController.result.records}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-4">
           <form name="form" no-validate>
             <div class="form-group">
               <input name="search" type="text" class="form-control"
@@ -22,29 +41,12 @@
       </div>
     </div>
   </div>
-  <div class="row results">
+  <div class="row">
     <div class="col-md-10">
-      <div ng-include="'map/map.tpl.html'"></div>
-      <table class="table table-condensed">
-        <thead>
-        <th>Key</th>
-        <th>Canonical Name</th>
-        <th>Scientific Name</th>
-        <th>Rank</th>
-        </thead>
-        <tbody>
-        <tr ng-click="searchController.setUsageKey(searchController.result.usageKey)">
-          <td>{{searchController.result.usageKey}}</td>
-          <td>{{searchController.result.canonicalName}}</td>
-          <td>{{searchController.result.scientificName}}</td>
-          <td>{{searchController.result.rank}}</td>
-          <td>{{searchController.result.records}}</td>
-        </tr>
-        </tbody>
-      </table>
+      <div id="map" ng-include="'map/map.tpl.html'"></div>
     </div>
     <div class="col-md-2">
-      <div class="hidden-sm hidden-xs">
+      <div id="last-search-requests" class="hidden-sm hidden-xs">
         <h3>Last search requests</h3>
         <ul>
           <li ng-repeat="lastSearch in searchController.lastSearches | limitTo:10">
