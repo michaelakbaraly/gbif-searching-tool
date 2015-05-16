@@ -12,6 +12,11 @@
 </head>
 <body ng-app="gbif-tool">
 <div ng-controller="MainController as mainController">
+  <div ng-if="spinner" id="spinner-container">
+    <div class="spinner">
+      <img src="assets/images/spinner.gif">
+    </div>
+  </div>
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="row">
@@ -26,7 +31,7 @@
       </div>
     </div>
   </nav>
-  <div class="container" ui-view></div>
+  <div id="content" class="container" ui-view></div>
 </div>
 </body>
 <!-- build:lib js/lib.js -->
@@ -41,6 +46,7 @@
 <script src="./templates.js"></script>
 <script src="./app.module.js"></script>
 <script src="./app.ctrl.js"></script>
+<script src="./app.interceptor.service.js"></script>
 <script src="./modules/map/map.module.js"></script>
 <script src="./modules/map/map.service.js"></script>
 <script src="./modules/map/map.directive.js"></script>

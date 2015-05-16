@@ -27,8 +27,20 @@ body {
   height: 50px; }
 
 .footer {
-  img-width: 20px;
-  img-height: 20px;
   position: absolute;
   bottom: 0;
   height: 60px; }
+  .footer img {
+    width: 20px;
+    height: 20px; }
+
+#spinner-container {
+  z-index: 10000;
+  position: fixed;
+  right: 0; }
+  #spinner-container .spinner {
+    position: absolute;
+    right: 20px; }
+    #spinner-container .spinner img {
+      width: 30px;
+      height: 30px; }
