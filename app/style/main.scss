@@ -31,6 +31,7 @@ body {
       height: 400px;
     }
   }
+  /* keep a neutral zone to scroll down the map */
   @media screen and (min-width: 200px) and (max-width: 640px) {
     .map {
       padding: 10px;

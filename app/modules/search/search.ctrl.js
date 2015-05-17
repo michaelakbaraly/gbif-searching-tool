@@ -13,7 +13,6 @@
     vm.suggest = suggest;
     vm.closeAlert = closeAlert;
     vm.lastSearches = retrieveLastSearches();
-    vm.showSlider = false;
 
     if (vm.search) {
       vm.find(vm.search);
