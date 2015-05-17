@@ -52,7 +52,7 @@
         }).addTo(map);
       },
       updateTileLayer: function (map, tileLayer, key, dateRange) {
-        var url = "http://api.gbif.org/v1/map/density/tile?x={x}&y={y}&z={z}&type=TAXON&palette=yellows_reds";
+        var url = "http://api.gbif.org/v1/map/density/tile?x={x}&y={y}&z={z}&type=TAXON&palette=yellows_reds&resolution=2";
         if (!_.isEmpty(dateRange)) {
           var layer = generateLayerString(dateRange);
           url += layer;

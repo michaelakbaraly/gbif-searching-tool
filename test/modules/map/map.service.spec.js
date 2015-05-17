@@ -42,7 +42,7 @@ describe("Service: MapService", function () {
             var key = "KEY";
             MapService.updateTileLayer(map, tileLayer, key);
             expect(L.tileLayer).toHaveBeenCalledWith("http://api.gbif.org/v1/map/density/tile?x={x}&y={y}&z={z}" +
-            "&type=TAXON&palette=yellows_reds&key=KEY", {maxZoom: 18});
+            "&type=TAXON&palette=yellows_reds&resolution=2&key=KEY", {maxZoom: 18});
           });
         });
         describe("when the key is empty", function () {
@@ -73,7 +73,7 @@ describe("Service: MapService", function () {
           };
           MapService.updateTileLayer(map, tileLayer, key, dateRange);
           expect(L.tileLayer).toHaveBeenCalledWith("http://api.gbif.org/v1/map/density/tile?x={x}&y={y}&z={z}" +
-          "&type=TAXON&palette=yellows_reds" +
+          "&type=TAXON&palette=yellows_reds&resolution=2" +
           "&layer=OBS_1990_2000&layer=SP_1990_2000&layer=OTH_1990_2000" +
           "&layer=OBS_2000_2010&layer=SP_2000_2010&layer=OTH_2000_2010" +
           "&key=KEY", {maxZoom: 18});
@@ -89,7 +89,7 @@ describe("Service: MapService", function () {
           };
           MapService.updateTileLayer(map, tileLayer, key, dateRange);
           expect(L.tileLayer).toHaveBeenCalledWith("http://api.gbif.org/v1/map/density/tile?x={x}&y={y}&z={z}" +
-          "&type=TAXON&palette=yellows_reds" +
+          "&type=TAXON&palette=yellows_reds&resolution=2" +
           "&layer=OBS_1990_2000&layer=SP_1990_2000&layer=OTH_1990_2000&key=KEY", {maxZoom: 18});
         });
         it("should set the dateRange to PRE_1900 if both dates are 1890", function () {
@@ -101,7 +101,7 @@ describe("Service: MapService", function () {
           };
           MapService.updateTileLayer(map, tileLayer, key, dateRange);
           expect(L.tileLayer).toHaveBeenCalledWith("http://api.gbif.org/v1/map/density/tile?x={x}&y={y}&z={z}" +
-          "&type=TAXON&palette=yellows_reds" +
+          "&type=TAXON&palette=yellows_reds&resolution=2" +
           "&layer=OBS_PRE_1900&layer=SP_PRE_1900&layer=OTH_PRE_1900&key=KEY", {maxZoom: 18});
         });
       });
@@ -117,7 +117,7 @@ describe("Service: MapService", function () {
 
           MapService.updateTileLayer(map, tileLayer, key, dateRange);
           expect(L.tileLayer).toHaveBeenCalledWith("http://api.gbif.org/v1/map/density/tile?x={x}&y={y}&z={z}" +
-          "&type=TAXON&palette=yellows_reds" +
+          "&type=TAXON&palette=yellows_reds&resolution=2" +
           "&layer=OBS_NO_YEAR&layer=SP_NO_YEAR&layer=OTH_NO_YEAR&key=KEY", {maxZoom: 18});
         });
       });

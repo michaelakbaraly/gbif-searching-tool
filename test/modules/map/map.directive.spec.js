@@ -47,7 +47,7 @@ describe("Directive: MapDirective", function () {
     var sliderElement;
     beforeEach(function () {
       element =
-        "<gbif-map key=\"12345\" show-slider min-date=\"2000\" max-date=\"2020\"></gbif-map>";
+        "<gbif-map key=\"12345\" show-slider=\"true\" min-date=\"2000\" max-date=\"2020\"></gbif-map>";
       element = compile(element)(scope);
       scope.$digest();
       sliderElement = $(element).find("#slider")[0];
