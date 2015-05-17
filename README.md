@@ -15,6 +15,7 @@ Features:
 - Direct access to the last searches
 - Autocompletion
 - Searches are bookmarkable
+- Results can be filtered by date periods
  
 Eco-system: 
 -----------
