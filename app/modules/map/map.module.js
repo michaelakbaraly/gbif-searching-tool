@@ -1,3 +1,3 @@
 (function () {
-  angular.module("gbif-map", []);
+  angular.module("gbif-map", ["ui.slider"]);
 })();

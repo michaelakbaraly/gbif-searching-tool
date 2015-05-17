@@ -23,7 +23,7 @@
           </table>
         </div>
         <div class="col-md-4">
-          <form name="form" no-validate>
+          <form name="form" no-validate ng-submit="searchController.find(searchController.search)">
             <div class="form-group">
               <input name="search" type="text" class="form-control"
                      placeholder="Ex: Animalia, Pica pica, Puma Concolor"
@@ -32,8 +32,7 @@
                      typeahead="suggestion.canonicalName for suggestion in searchController.suggestions"/>
             </div>
             <div class="pull-right">
-              <button class="btn btn-default"
-                      ng-click="searchController.find(searchController.search)"
+              <button type="submit" class="btn btn-default"
                       ng-disabled="!searchController.search">Search
               </button>
             </div>
@@ -44,6 +43,9 @@
   </div>
   <div class="row">
     <div class="col-md-10">
+      <button type="button" class="btn btn-primary" ng-model="searchController.showSlider" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false">
+        Show slider
+      </button>
       <div id="map" ng-include="'map/map.tpl.html'"></div>
     </div>
     <div class="col-md-2">

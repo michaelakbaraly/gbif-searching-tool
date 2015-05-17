@@ -20,15 +20,26 @@ body {
 }
 
 #map {
-  display: block;
   .map {
+    position: relative;
+    display: block;
     width: 100%;
     height: 600px;
   }
-  @media screen and (max-height: 800px) {
+  @media screen and (max-height: 950px) {
     .map {
       height: 400px;
     }
+  }
+  @media screen and (min-width: 200px) and (max-width: 640px) {
+    .map {
+      padding: 10px;
+    }
+  }
+  #slider {
+    position: relative;
+    width: 100%;
+    padding: 10px;
   }
 }
 
